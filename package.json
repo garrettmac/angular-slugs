@@ -1,5 +1,5 @@
 {
-  "name": "angular-slug",
+  "name": "angular-slugs",
   "version": "1.0.1",
   "description": "Provides “slugification” for AngularJS in the form of a service, filter, and a directive.",
   "main": "angular-slug.js",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/garrettmac/angular-slug.git"
+    "url": "https://github.com/garrettmac/angular-slugs.git"
   },
   "keywords": [
     "slug",
