@@ -1,37 +1,38 @@
 # angular-slug
 
-Provides “slugification” for AngularJS in the form of a service, filter, and
-a directive.
+[Inspired by paulsmith's angular-slugify](https://github.com/paulsmith/angular-slugify) angular-slugs converts converts text into slugs or slugs into text with desired capitalization through a service and filter.
 
-## What is a slug?
 
-A slug is that final portion of a URL which is derived from some other piece of
-information, usually the title of a page.
+## Installation
 
-For example, “Man Bites Dog” might produce the slug `man-bites-dog` for the URL:
+You can install the filter using [Bower](http://bower.io/):
 
-`http://example.com/2013/04/man-bites-dog.html`
+```bash
+$ bower install angular-slugs
+```
 
-## Demo
+Or [npm](https://www.npmjs.com/):
 
-[Click here for demo](http://garrettmac.github.io/angular-slug/).
+```bash
+$ npm install angular-slugs
+```
 
-## Usage
-
-Include `angular-slug.js` in your HTML document somewhere after you have set
-up AngularJS.
+Then you have to include it in your HTML:
 
 ```html
-<script src="angular-slug.js">
+<script src="bower_components/angular-slugs/angular-slug.js"></script>
+<script src="bower_components/angular-slugs/angular-unslug.js"></script>
+<script src="bower_components/angular-slugs/angular-capitalize.js"></script>
 ```
 
-Make `slugifier` a dependency in your AngularJS app.
+And inject the desired modules into your application:
 
 ```js
-angular.module("myApp", ["slugifier"]);
+angular.module('webApp', ['capitalizer','slugifier','unslugifier']);
 ```
 
-### Service
+
+## Service
 
 The `Slug` service provides a single function `slug` that takes a string
 input as argument and returns the slugified string.
@@ -43,40 +44,65 @@ function MyCtrl($scope, Slug) {
     };
 }
 ```
+or
+
+```js
+function MyCtrl($scope, Unslug) {
+    $scope.unslug = function(input) {
+        $scope.myUnslug = Unslug.slug(input);
+    };
+}
+```
 
 ### Filter
 
-The `slug` filter slugifies any text passed to it in an AngularJS curly-brace
+To use add a `slug` or `unslug` pipe filter in your AngularJS curly-brace
 expression.
 
-```html
-<input type="text" ng-model="title">
-<p>Slug: {{title | slug}}</p>
-```
-
-### Directive
-
-The `slug` directive is a way to declaratively say one model is the
-slugification of another.
+Filters `hello world` to `hello-world`
 
 ```html
-<slug from="post.title" to="post.slug">My slug is {{post.slug}}</slug>
-<p>It also works out here: {{post.slug}}</p>
+<p>Slug: {{msg | slug}}</p>
+```
+Filters `hello-world` to `hello world`
+
+```html
+<p>Unslug: {{msg | unslug}}</p>
 ```
 
-The `from` attribute is the name of the model in the current scope you want to
-slug. The `to` attribute is the name of the model you want to be
-automatically updated with the slugification whenever `from` changes.
+Filters `hello world` to `Hello world`
 
-## Tests
+```html
+<p>Unslug: {{msg | unslug| capitalize}}</p>
+```
 
-```bash
-$ npm test
+Filters `hello world` to `Hello World`
+
+```html
+<p>Unslug: {{msg | unslug| capitalize:true}}</p>
+```
+
+
+
+## Capitalize
+
+You can use it like any other AngularJS filter:
+
+First word only:
+
+```html
+<p>{{msg | capitalize}}</p>
+```
+
+First Letter In All Words:
+
+```html
+<p>{{msg | capitalize:true}}</p>
 ```
 
 ## License
 
-Copyright © 2013 Paul Smith <garrettmac@pobox.com>
+Copyright © 2016 Garrett M. <team@cera.io>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the “Software”), to deal

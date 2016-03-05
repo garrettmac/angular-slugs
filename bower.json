@@ -1,0 +1,36 @@
+{
+  "name": "angular-slugs",
+  "version": "1.0.1",
+  "main": "./angular-slugs.js",
+  "dependencies": {
+    "angular": "^1.0.x"
+  },
+  "devDependencies": {
+    "angular": "^1.2.x",
+    "angular-mocks": "^1.2.x"
+  },
+  "homepage": "https://github.com/garrettmac/angular-slugs",
+  "authors": [
+    "team@cera.io"
+  ],
+  "description": "[Inspired by paulsmith's angular-slugify](https://github.com/paulsmith/angular-slugify) angular-slugs converts converts text into slugs or slugs into text with desired capitalization through a service and filter.",
+  "moduleType": [],
+  "keywords": [
+    "angular-slugs",
+    "slug",
+    "angular",
+    "slugify",
+    "unslugify",
+    "filter",
+    "service"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/lib",
+    "test",
+    "tests"
+  ]
+}
